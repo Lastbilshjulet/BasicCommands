@@ -111,3 +111,7 @@ buildNumber.properties
 
 # Common working directory
 run/
+
+# mine
+.gitignore
+pom.xml
