@@ -1,0 +1,19 @@
+name: BasicCommands
+version: '${project.version}'
+main: me.mr9te.basiccommands.BasicCommands
+api-version: 1.17
+authors: [ Mr9te ]
+description: A plugin for Spigot adding basic commands like /home, /tpa and more
+commands:
+  sethome:
+    description: Set a home with a name, max 5 at once.
+    usage: /<command> <name>
+  home:
+    description: Teleport to the home specified.
+    usage: /<command> <name>
+  delhome:
+    description: Removes the home specified.
+    usage: /<command> <name>
+  homes:
+    description: Lists all homes.
+    usage: /<command>
