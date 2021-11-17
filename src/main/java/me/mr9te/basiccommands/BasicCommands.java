@@ -1,9 +1,6 @@
 package me.mr9te.basiccommands;
 
-import me.mr9te.basiccommands.commands.DelhomeCommand;
-import me.mr9te.basiccommands.commands.HomeCommand;
-import me.mr9te.basiccommands.commands.HomesCommand;
-import me.mr9te.basiccommands.commands.SethomeCommand;
+import me.mr9te.basiccommands.commands.*;
 import me.mr9te.basiccommands.listeners.PlayerListeners;
 import me.mr9te.basiccommands.tabcompletion.HomeTabCompletion;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -21,13 +18,18 @@ public final class BasicCommands extends JavaPlugin {
         getConfig().options().copyDefaults();
         saveDefaultConfig();
 
+        // Commands
         Objects.requireNonNull(getCommand("home")).setExecutor(new HomeCommand());
         Objects.requireNonNull(getCommand("sethome")).setExecutor(new SethomeCommand());
         Objects.requireNonNull(getCommand("delhome")).setExecutor(new DelhomeCommand());
         Objects.requireNonNull(getCommand("homes")).setExecutor(new HomesCommand());
+
+        // Tabcompletions
         Objects.requireNonNull(getCommand("home")).setTabCompleter(new HomeTabCompletion());
         Objects.requireNonNull(getCommand("sethome")).setTabCompleter(new HomeTabCompletion());
         Objects.requireNonNull(getCommand("delhome")).setTabCompleter(new HomeTabCompletion());
+
+        // Listeners
         getServer().getPluginManager().registerEvents(new PlayerListeners(), this);
     }
 

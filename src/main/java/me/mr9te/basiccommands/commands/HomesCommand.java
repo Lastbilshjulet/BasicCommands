@@ -1,7 +1,7 @@
 package me.mr9te.basiccommands.commands;
 
 import me.mr9te.basiccommands.BasicCommands;
-import me.mr9te.basiccommands.data.HomeLocations;
+import me.mr9te.basiccommands.data.CustomConfig;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -18,15 +18,16 @@ public class HomesCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof Player player) {
-            HomeLocations.setup(player.getUniqueId() + "HomeLocations.yml");
-            List<String> homesInfo = HomeLocations.getHomeLocations().getStringList("homes");
+            CustomConfig.setupCustomConfig(player.getUniqueId() + "CustomConfig.yml");
+            List<String> homesInfo = CustomConfig.getCustomConfig().getStringList("homes");
             if (homesInfo.size() > 0) {
                 player.sendMessage(ChatColor.GOLD + "Your homes:");
             } else {
                 player.sendMessage(ChatColor.RED + "You don't have any homes set. ");
             }
             for (String s : homesInfo) {
-                player.sendMessage(ChatColor.YELLOW + " > " + s.split(";")[0]);
+                String[] arr = s.split(";");
+                player.sendMessage(ChatColor.YELLOW + " > " + arr[0] + ChatColor.DARK_GREEN + " - XYZ: " + arr[1] + " / " + arr[2] + " / " + arr[3]);
             }
         } else {
             plugin.getLogger().info("Have to be a player to set home.");

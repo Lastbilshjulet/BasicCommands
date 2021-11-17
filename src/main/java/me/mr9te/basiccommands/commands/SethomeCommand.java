@@ -1,7 +1,7 @@
 package me.mr9te.basiccommands.commands;
 
 import me.mr9te.basiccommands.BasicCommands;
-import me.mr9te.basiccommands.data.HomeLocations;
+import me.mr9te.basiccommands.data.CustomConfig;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
@@ -22,11 +22,11 @@ public class SethomeCommand implements CommandExecutor {
         if (sender instanceof Player player) {
             if (args.length > 0) {
 
-                HomeLocations.setup(player.getUniqueId() + "HomeLocations.yml");
+                CustomConfig.setupCustomConfig(player.getUniqueId() + "CustomConfig.yml");
                 Location currLocation = player.getLocation();
                 String[] location = {Double.toString(currLocation.getX()), Double.toString(currLocation.getY()), Double.toString(currLocation.getZ())};
 
-                List<String> homes = HomeLocations.getHomeLocations().getStringList("homes");
+                List<String> homes = CustomConfig.getCustomConfig().getStringList("homes");
 
                 // Check if there is a home with this name already to overwrite it
                 int index = -1;
@@ -59,9 +59,9 @@ public class SethomeCommand implements CommandExecutor {
                     }
                 }
                 // Save homes
-                HomeLocations.getHomeLocations().set("homes", homes);
-                HomeLocations.saveHomeLocations();
-                HomeLocations.reloadHomeLocations();
+                CustomConfig.getCustomConfig().set("homes", homes);
+                CustomConfig.saveCustomConfig();
+                CustomConfig.reloadCustomConfig();
             } else {
                 player.sendMessage(ChatColor.RED + "You need a name for your home.");
                 return false;

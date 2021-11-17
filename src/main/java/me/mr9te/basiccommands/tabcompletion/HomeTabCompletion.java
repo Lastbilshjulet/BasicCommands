@@ -1,6 +1,6 @@
 package me.mr9te.basiccommands.tabcompletion;
 
-import me.mr9te.basiccommands.data.HomeLocations;
+import me.mr9te.basiccommands.data.CustomConfig;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabCompleter;
@@ -16,8 +16,8 @@ public class HomeTabCompletion implements TabCompleter {
         if (sender instanceof Player player) {
             if (args.length == 1){
                 List<String> homes = new ArrayList<>();
-                HomeLocations.setup(player.getUniqueId() + "HomeLocations.yml");
-                List<String> homesInfo = HomeLocations.getHomeLocations().getStringList("homes");
+                CustomConfig.setupCustomConfig(player.getUniqueId() + "CustomConfig.yml");
+                List<String> homesInfo = CustomConfig.getCustomConfig().getStringList("homes");
                 for (String s : homesInfo) {
                     homes.add(s.split(";")[0]);
                 }

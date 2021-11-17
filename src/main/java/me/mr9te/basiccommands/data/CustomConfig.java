@@ -8,33 +8,33 @@ import org.bukkit.plugin.Plugin;
 import java.io.File;
 import java.io.IOException;
 
-public class HomeLocations {
+public class CustomConfig {
 
     private static File file;
     private static FileConfiguration customFile;
     private static final Plugin plugin = BasicCommands.getPlugin(BasicCommands.class);
 
     //Finds or generates the custom config file
-    public static void setup(String filename){
+    public static void setupCustomConfig(String filename) {
         file = new File(plugin.getDataFolder(), filename);
 
-        if (!file.exists()){
-            try{
+        if (!file.exists()) {
+            try {
                 if (file.createNewFile()) {
                     plugin.getLogger().info("Created a new file. ");
                 }
-            }catch (IOException e){
+            } catch (IOException e) {
                 plugin.getLogger().info("Could not create a new file. ");
             }
         }
         customFile = YamlConfiguration.loadConfiguration(file);
     }
 
-    public static FileConfiguration getHomeLocations(){
+    public static FileConfiguration getCustomConfig(){
         return customFile;
     }
 
-    public static void saveHomeLocations(){
+    public static void saveCustomConfig(){
         try {
             customFile.save(file);
         } catch (IOException e) {
@@ -42,7 +42,7 @@ public class HomeLocations {
         }
     }
 
-    public static void reloadHomeLocations(){
+    public static void reloadCustomConfig(){
         customFile = YamlConfiguration.loadConfiguration(file);
     }
 }
