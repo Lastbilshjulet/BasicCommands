@@ -29,3 +29,6 @@ commands:
   tpdeny:
     description: Deny the most resent teleport request.
     usage: /<command>
+  spawn:
+    description: Teleport to spawn.
+    usage: /<command>

@@ -24,7 +24,6 @@ public class SethomeCommand implements CommandExecutor {
 
                 CustomConfig.setupCustomConfig(player.getUniqueId() + "CustomConfig.yml");
                 Location currLocation = player.getLocation();
-                String[] location = {Double.toString(currLocation.getX()), Double.toString(currLocation.getY()), Double.toString(currLocation.getZ())};
 
                 List<String> homes = CustomConfig.getCustomConfig().getStringList("homes");
 

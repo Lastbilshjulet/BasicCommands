@@ -6,7 +6,7 @@
 
     <groupId>me.Mr9te</groupId>
     <artifactId>BasicCommands</artifactId>
-    <version>1.0</version>
+    <version>1.3</version>
     <packaging>jar</packaging>
 
     <name>BasicCommands</name>

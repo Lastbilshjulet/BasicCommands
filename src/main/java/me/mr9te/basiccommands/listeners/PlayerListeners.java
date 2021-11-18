@@ -1,7 +1,9 @@
 package me.mr9te.basiccommands.listeners;
 
 import me.mr9te.basiccommands.BasicCommands;
+import me.mr9te.basiccommands.data.CustomConfig;
 import org.bukkit.ChatColor;
+import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
 import org.bukkit.entity.Player;
@@ -10,6 +12,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.*;
 import org.bukkit.plugin.Plugin;
 
+import java.util.Date;
+
 public class PlayerListeners implements Listener {
 
     Plugin plugin = BasicCommands.getPlugin(BasicCommands.class);
@@ -17,7 +21,20 @@ public class PlayerListeners implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        event.setJoinMessage(ChatColor.GOLD + "Welcome to the server, " + player.getDisplayName() + "!");
+        Date date = new Date();
+        if (date.getTime() - player.getFirstPlayed() < 1000) {
+            CustomConfig.setupCustomConfig("spawn.yml");
+            double spawnX = CustomConfig.getCustomConfig().getDouble("spawn.x");
+            double spawnY = CustomConfig.getCustomConfig().getDouble("spawn.y");
+            double spawnZ = CustomConfig.getCustomConfig().getDouble("spawn.z");
+            float spawnYaw = (float) CustomConfig.getCustomConfig().getDouble("spawn.yaw");
+            float spawnPitch = (float) CustomConfig.getCustomConfig().getDouble("spawn.pitch");
+            Location spawnLocation = new Location(plugin.getServer().getWorld("world"), spawnX, spawnY, spawnZ, spawnYaw, spawnPitch);
+            player.teleport(spawnLocation);
+            event.setJoinMessage(ChatColor.GOLD + "Welcome to the server, " + player.getDisplayName() + "!");
+        } else {
+            event.setJoinMessage(ChatColor.GOLD + "Welcome back to the server, " + player.getDisplayName() + "!");
+        }
     }
 
     @EventHandler

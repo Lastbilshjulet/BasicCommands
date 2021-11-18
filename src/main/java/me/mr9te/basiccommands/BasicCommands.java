@@ -36,6 +36,7 @@ public final class BasicCommands extends JavaPlugin {
         Objects.requireNonNull(getCommand("tpaccept")).setExecutor(new TPAcceptCommand(this));
         Objects.requireNonNull(getCommand("tpdeny")).setExecutor(new TPDenyCommand(this));
         Objects.requireNonNull(getCommand("tpahere")).setExecutor(new TPAHereCommand(this));
+        Objects.requireNonNull(getCommand("spawn")).setExecutor(new SpawnCommand(this));
 
         // Tabcompletions
         Objects.requireNonNull(getCommand("home")).setTabCompleter(new HomeTabCompletion());
