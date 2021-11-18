@@ -74,10 +74,10 @@ public class SethomeCommand implements CommandExecutor {
     }
 
     private double round2d(Double value) {
-        return Math.round(value*100)/100D;
+        return Math.round(value * 100) / 100D;
     }
 
     private float round2f(Float value) {
-        return (float) (Math.round(value*100)/100D);
+        return (float) (Math.round(value * 100) / 100D);
     }
 }

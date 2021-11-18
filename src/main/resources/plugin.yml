@@ -17,3 +17,15 @@ commands:
   homes:
     description: Lists all homes.
     usage: /<command>
+  tpa:
+    description: Send a teleport request to another player.
+    usage: /<command> <player>
+  tpahere:
+    description: Send a teleport request to another player.
+    usage: /<command> <player>
+  tpaccept:
+    description: Accept the most resent teleport request.
+    usage: /<command>
+  tpdeny:
+    description: Deny the most resent teleport request.
+    usage: /<command>
