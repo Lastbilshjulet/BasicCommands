@@ -26,14 +26,14 @@ public class HomeCommand implements CommandExecutor {
                 for (String s : homes) {
                     String[] homeinfo = s.split(";");
                     if (homeinfo[0].equalsIgnoreCase(args[0])) {
-                        home = new Location(plugin.getServer().getWorld("world"),
+                        home = new Location(plugin.getServer().getWorld(homeinfo[6]),
                                 Double.parseDouble(homeinfo[1]),
                                 Double.parseDouble(homeinfo[2]),
                                 Double.parseDouble(homeinfo[3]),
                                 Float.parseFloat(homeinfo[4]),
                                 Float.parseFloat(homeinfo[5]));
                         player.teleport(home);
-                        player.sendMessage(ChatColor.YELLOW + "Teleported to " + args[0] + ". ");
+                        player.sendMessage(ChatColor.YELLOW + "Teleporting to " + args[0] + "... ");
                         return true;
                     }
                 }

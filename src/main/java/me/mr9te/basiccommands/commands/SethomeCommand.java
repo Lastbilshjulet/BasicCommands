@@ -41,19 +41,22 @@ public class SethomeCommand implements CommandExecutor {
                             round2d(currLocation.getY()) + ";" +
                             round2d(currLocation.getZ()) + ";" +
                             round2f(player.getLocation().getYaw()) + ";" +
-                            round2f(player.getLocation().getPitch()));
+                            round2f(player.getLocation().getPitch()) + ";" +
+                            currLocation.getWorld().getName());
                     player.sendMessage(ChatColor.GREEN + args[0] + " set at: " + round2d(currLocation.getX()) + ", " + round2d(currLocation.getY()) + ", " + round2d(currLocation.getZ()));
                 } else {
                     // Check if there are too many homes else add home to list
-                    if (homes.size() == plugin.getConfig().getInt("max-homes")) {
-                        player.sendMessage(ChatColor.RED + "Max " + plugin.getConfig().getInt("max-homes") + " homes per person");
+                    int maxHomes = plugin.getConfig().getInt("max-homes");
+                    if (homes.size() == maxHomes) {
+                        player.sendMessage(ChatColor.RED + "Max " + maxHomes + " homes per person");
                     } else {
                         homes.add(args[0] + ";" +
                                 round2d(currLocation.getX()) + ";" +
                                 round2d(currLocation.getY()) + ";" +
                                 round2d(currLocation.getZ()) + ";" +
                                 round2f(player.getLocation().getYaw()) + ";" +
-                                round2f(player.getLocation().getPitch()));
+                                round2f(player.getLocation().getPitch()) + ";" +
+                                currLocation.getWorld().getName());
                         player.sendMessage(ChatColor.GREEN + args[0] + " set at: " + round2d(currLocation.getX()) + ", " + round2d(currLocation.getY()) + ", " + round2d(currLocation.getZ()));
                     }
                 }

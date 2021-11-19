@@ -25,9 +25,19 @@ public class HomesCommand implements CommandExecutor {
             } else {
                 player.sendMessage(ChatColor.RED + "You don't have any homes set. ");
             }
+            String worldName;
             for (String s : homesInfo) {
                 String[] arr = s.split(";");
-                player.sendMessage(ChatColor.YELLOW + " > " + arr[0] + ChatColor.DARK_GREEN + " - XYZ: " + arr[1] + " / " + arr[2] + " / " + arr[3]);
+                if (arr[6].equalsIgnoreCase("world")) {
+                    worldName = "Overworld";
+                } else if (arr[6].equalsIgnoreCase("world_nether")) {
+                    worldName = "Nether";
+                } else if (arr[6].equalsIgnoreCase("world_the_end")) {
+                    worldName = "End";
+                } else {
+                    worldName = arr[6];
+                }
+                player.sendMessage(ChatColor.YELLOW + " > " + arr[0] + ChatColor.DARK_GREEN + " - XYZ: " + arr[1] + " / " + arr[2] + " / " + arr[3] + " / " + worldName);
             }
         } else {
             plugin.getLogger().info("Have to be a player to set home.");
