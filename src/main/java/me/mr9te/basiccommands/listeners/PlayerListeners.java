@@ -29,11 +29,20 @@ public class PlayerListeners implements Listener {
             double spawnZ = CustomConfig.getCustomConfig().getDouble("spawn.z");
             float spawnYaw = (float) CustomConfig.getCustomConfig().getDouble("spawn.yaw");
             float spawnPitch = (float) CustomConfig.getCustomConfig().getDouble("spawn.pitch");
+            if (spawnY < 1) {
+                spawnY = 65.0;
+            }
             Location spawnLocation = new Location(plugin.getServer().getWorld("world"), spawnX, spawnY, spawnZ, spawnYaw, spawnPitch);
             player.teleport(spawnLocation);
+            plugin.getServer().getLogger().info("Teleported " + player.getDisplayName() + " to " + spawnX + spawnY + spawnZ + spawnYaw + spawnPitch);
+
             event.setJoinMessage(ChatColor.GOLD + "Welcome to the server, " + player.getDisplayName() + "!");
         } else {
-            event.setJoinMessage(ChatColor.GOLD + "Welcome back to the server, " + player.getDisplayName() + "!");
+            if (player.getDisplayName().equalsIgnoreCase("manola5000")) {
+                event.setJoinMessage(ChatColor.GOLD + "Welcome back to the server, manshora5000!");
+            } else {
+                event.setJoinMessage(ChatColor.GOLD + "Welcome back to the server, " + player.getDisplayName() + "!");
+            }
         }
     }
 
