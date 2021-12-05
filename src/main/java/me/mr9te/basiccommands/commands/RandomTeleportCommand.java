@@ -1,6 +1,7 @@
 package me.mr9te.basiccommands.commands;
 
 import me.mr9te.basiccommands.BasicCommands;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
@@ -35,8 +36,8 @@ public record RandomTeleportCommand(BasicCommands plugin) implements CommandExec
                         }
                     }
                 }
-                player.sendMessage("test");
             }
+            player.sendMessage(ChatColor.YELLOW + " Teleported to" + ChatColor.DARK_GREEN + " - XYZ: " + randomLocation.getX() + " / " + randomLocation.getY() + " / " + randomLocation.getZ());
             player.teleport(randomLocation);
         } else {
             plugin.getLogger().info("Have to be a player to teleport to a random place.");
