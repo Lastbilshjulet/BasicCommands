@@ -32,3 +32,8 @@ commands:
   spawn:
     description: Teleport to spawn.
     usage: /<command>
+  rtp:
+    description: Teleport to a random place.
+    usage: /<command>
+    aliases:
+      - randomteleport

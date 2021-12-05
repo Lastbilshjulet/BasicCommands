@@ -11,6 +11,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Random;
 
 public final class BasicCommands extends JavaPlugin {
 
@@ -37,6 +38,7 @@ public final class BasicCommands extends JavaPlugin {
         Objects.requireNonNull(getCommand("tpdeny")).setExecutor(new TPDenyCommand(this));
         Objects.requireNonNull(getCommand("tpahere")).setExecutor(new TPAHereCommand(this));
         Objects.requireNonNull(getCommand("spawn")).setExecutor(new SpawnCommand(this));
+        Objects.requireNonNull(getCommand("rtp")).setExecutor(new RandomTeleportCommand(this));
 
         // Tabcompletions
         Objects.requireNonNull(getCommand("home")).setTabCompleter(new HomeTabCompletion());
